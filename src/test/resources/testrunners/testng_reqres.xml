@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="ReqRes API Automation Suite" verbose="3">
+
+
+
+	<test name="Req Res API Test">
+		<parameter name="baseUrl" value="https://reqres.in" />
+
+		<classes>
+			<class name="com.qa.reqres.api.tests.ReqResTest" />
+		</classes>
+	</test>
+	
+	 
+
+</suite>
