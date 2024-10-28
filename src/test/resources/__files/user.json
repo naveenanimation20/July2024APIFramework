@@ -1,0 +1,7 @@
+{
+	"id" : 101,
+    "name": "api",
+    "email": "testapi123@hotmail.com",
+    "gender": "male",
+    "status": "active"
+}

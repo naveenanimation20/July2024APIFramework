@@ -19,12 +19,11 @@ public class CreateUserTest extends BaseTest{
 	
 	@Test
 	public void createUserTest() {
-		
 		User user = new User(null, "Naveen", StringUtility.getRandomEmailId(), "male", "active");
 		Response response = restClient.post(BASE_URL_GOREST, "/public/v2/users", user, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 		Assert.assertEquals(response.getStatusCode(), 201);
-		
 	}
+	
 	
 	@Test
 	public void createUserWithBuilderTest() {
@@ -50,8 +49,10 @@ public class CreateUserTest extends BaseTest{
 		Assert.assertEquals(responseGet.jsonPath().getString("id"), userId);
 		Assert.assertEquals(responseGet.jsonPath().getString("name"), user.getName());
 		Assert.assertEquals(responseGet.jsonPath().getString("email"), user.getEmail());
-
 	}
+	
+	
+	
 	
 	
 	@Test(enabled = false)
