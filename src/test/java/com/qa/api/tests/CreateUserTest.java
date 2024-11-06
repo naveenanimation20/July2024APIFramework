@@ -3,6 +3,7 @@ package com.qa.api.tests;
 import java.io.File;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.api.base.BaseTest;
@@ -15,25 +16,31 @@ import io.restassured.response.Response;
 
 public class CreateUserTest extends BaseTest{
 	
+	@DataProvider
+	public Object[][] getUserData() {
+		return new Object[][] {
+			{"Naveen", "male", "active"},
+			{"Abhi", "male", "inactive"},
+			{"Kanchan", "female", "active"}
+		};
+	}
 	
-	
-	@Test
-	public void createUserTest() {
-		User user = new User(null, "Naveen", StringUtility.getRandomEmailId(), "male", "active");
+	@Test(dataProvider = "getUserData")
+	public void createUserTest(String name, String gender, String status) {
+		User user = new User(null, name, StringUtility.getRandomEmailId(), gender, status);
 		Response response = restClient.post(BASE_URL_GOREST, "/public/v2/users", user, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 		Assert.assertEquals(response.getStatusCode(), 201);
 	}
 	
 	
-	@Test
-	public void createUserWithBuilderTest() {
-		
+	@Test(dataProvider = "getUserData")
+	public void createUserWithBuilderTest(String name, String gender, String status) {
 		//POST
 		User user = User.builder()
-				.name("apiname")
+				.name(name)
 				.email(StringUtility.getRandomEmailId())
-				.status("active")
-				.gender("female")
+				.status(status)
+				.gender(gender)
 				.build();
 		
 		Response response = restClient.post(BASE_URL_GOREST, "/public/v2/users", user, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
