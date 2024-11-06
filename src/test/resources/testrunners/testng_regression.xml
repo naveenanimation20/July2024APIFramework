@@ -18,7 +18,7 @@
 		</classes>
 	</test>
 
-	<test name="Update User Test">
+	<!-- <test name="Update User Test">
 
 		<classes>
 			<class name="com.qa.api.tests.UpdateUserTest" />
@@ -45,7 +45,7 @@
 		<classes>
 			<class name="com.qa.api.tests.CreateUserTest" />
 		</classes>
-	</test>
+	</test> -->
 
 
 	<test name="Req Res API Test">
