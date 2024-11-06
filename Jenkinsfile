@@ -59,7 +59,7 @@ pipeline
         }
         
         
-        stage('Publish Extent Report'){
+        stage('Publish Regresion Extent Report'){
             steps{
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
@@ -89,7 +89,7 @@ pipeline
         }
         
         
-         stage('Publish Extent Report'){
+         stage('Publish Sanity Extent Report'){
             steps{
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
