@@ -50,7 +50,7 @@ pipeline
             def dockerCommand = """
                 docker run --name apitesting${BUILD_NUMBER} \
                 -v "${WORKSPACE}/reports:/app/reports" \
-                naveenkhunteta/apitestnewone:latest \
+                naveenkhunteta/apiregressiontest:latest \
                 /bin/bash -c "mvn test -Dsurefire.suiteXmlFiles=${suiteXmlFilePath}"
             """
             
@@ -60,7 +60,7 @@ pipeline
                 currentBuild.result = 'FAILURE'
             }
             sh "docker start apitesting${BUILD_NUMBER}"
-            sh "docker cp apitesting${BUILD_NUMBER}:/app/target/APIExecutionReport.html ${WORKSPACE}/target"
+            sh "docker cp apitesting${BUILD_NUMBER}:/app/reports/TestExecutionReport.html ${WORKSPACE}/reports"
             sh "docker cp apitesting${BUILD_NUMBER}:/app/allure-results ${WORKSPACE}/allure-results"
             sh "docker rm -f apitesting${BUILD_NUMBER}"
         }
@@ -75,13 +75,27 @@ pipeline
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
                                   keepAll: false, 
-                                  reportDir: 'target', 
-                                  reportFiles: 'APIExecutionReport.html', 
+                                  reportDir: 'reports', 
+                                  reportFiles: 'TestExecutionReport.html', 
                                   reportName: 'API HTML Regression Extent Report', 
                                   reportTitles: ''])
             }
         }
         
+        
+        stage('Publish Allure Reports') {
+           steps {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: '/allure-results']]
+                    ])
+                }
+            }
+        }
         
          
 
