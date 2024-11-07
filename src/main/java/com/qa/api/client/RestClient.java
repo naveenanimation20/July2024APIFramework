@@ -36,6 +36,8 @@ public class RestClient {
 	private ResponseSpecification responseSpec404 = expect().statusCode(404);
 	private ResponseSpecification responseSpec422 = expect().statusCode(422);
 	private ResponseSpecification responseSpec500 = expect().statusCode(500);
+	private ResponseSpecification responseSpec501 = expect().statusCode(501);
+
 	
 	
 		
