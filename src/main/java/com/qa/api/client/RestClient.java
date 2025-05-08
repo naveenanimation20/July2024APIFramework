@@ -101,6 +101,19 @@ public class RestClient {
 	
 	//**************************CRUD Methods*********************//
 	
+	private RequestSpecification setUpAuthAndContentType(String baseUrl, AuthType authType, ContentType contentType) {
+		 return setupRequest(baseUrl, authType, contentType);
+	}
+	
+	private void applyParams(RequestSpecification request, Map<String, String> queryParams, Map<String, String> pathParams) {
+		if(queryParams!=null) {
+			request.queryParams(queryParams);
+		}
+		if(pathParams!=null) {
+			request.pathParams(pathParams);
+		}
+	}
+	
 	/**
 	 * This method is used to call the GET APIs.
 	 * @param endPoint
@@ -110,14 +123,15 @@ public class RestClient {
 	 * @param contentType
 	 * @return it returns the get api response
 	 */
-	public Response get(String baseUrl, String endPoint, Map<String, String> queryParams,
-									Map<String, String> pathParams, 
-											AuthType authType, ContentType contentType) {
+	public Response get(String baseUrl, 
+						String endPoint, 
+						Map<String, String> queryParams,
+						Map<String, String> pathParams, 
+						AuthType authType, 
+						ContentType contentType) {
 		
 		RequestSpecification request = setUpAuthAndContentType(baseUrl, authType, contentType);
-		
-		applyParams(request, queryParams, pathParams);
-		
+		applyParams(request, queryParams, pathParams);		
 		Response response = request.get(endPoint).then().spec(responseSpec200or404).extract().response();
 		response.prettyPrint();
 		return response;
@@ -224,18 +238,7 @@ public class RestClient {
 	
 		
 	
-	private RequestSpecification setUpAuthAndContentType(String baseUrl, AuthType authType, ContentType contentType) {
-		 return setupRequest(baseUrl, authType, contentType);
-	}
 	
-	private void applyParams(RequestSpecification request, Map<String, String> queryParams, Map<String, String> pathParams) {
-		if(queryParams!=null) {
-			request.queryParams(queryParams);
-		}
-		if(pathParams!=null) {
-			request.pathParams(pathParams);
-		}
-	}
 	
 	
 	

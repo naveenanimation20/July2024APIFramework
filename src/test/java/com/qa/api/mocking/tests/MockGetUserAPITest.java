@@ -31,7 +31,7 @@ public class MockGetUserAPITest extends BaseTest{
 	public void getDummyUserWithQueryParamTest() {
 		
 		APIMocks.getDummyUserWithQueryParams();
-		Map<String, String> queryParams = Map.of("name","Tom");
+		Map<String, String> queryParams = Map.of("name","api");
 		Response response = restClient.get(BASE_URL_LOCALHOST_PORT, "/api/users", queryParams, null, AuthType.NO_AUTH, ContentType.ANY);
 		response.then()
 					.assertThat()

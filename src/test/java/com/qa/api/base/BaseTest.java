@@ -22,6 +22,7 @@ public class BaseTest {
 	protected final static String BASE_URL_AMADEUS = "https://test.api.amadeus.com";
 	protected final static String BASE_URL_LOCALHOST_PORT = "http://localhost:8089";
 
+	
 
 	// ***********AppEndpoints**************
 	protected static final String GOREST_USERS_ALL_ENDPOINT = "/public/v2/users";
