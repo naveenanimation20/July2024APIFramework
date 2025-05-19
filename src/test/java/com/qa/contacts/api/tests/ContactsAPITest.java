@@ -27,19 +27,17 @@ public class ContactsAPITest extends BaseTest{
 		Response response = restClient.post(BASE_URL_CONTACTS,"/users/login", creds, null, null, AuthType.NO_AUTH, ContentType.JSON);
 		tokenId = response.jsonPath().getString("token");
 		System.out.println("Token id ===>" + tokenId);
-		ConfigManager.set("contacts_bearer_Token", tokenId);
+		ConfigManager.set("bearerToken", tokenId);
 	}
 	
 	
 	@Test
 	public void getContactsTest() {
-		Response response = restClient.get(BASE_URL_CONTACTS, "/contacts", null, null, AuthType.CONTACTS_BEARER_TOKEN, ContentType.JSON);
+		Response response = restClient.get(BASE_URL_CONTACTS, "/contacts", null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 		Assert.assertEquals(response.statusCode(), 200);
 	}
 
 	
 	
-	
-	
-	
+		
 }

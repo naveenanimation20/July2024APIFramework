@@ -1,7 +1,8 @@
 package com.qa.api.client;
 
 import static io.restassured.RestAssured.expect;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.equalTo;
 
 import java.io.File;
 import java.util.Base64;
@@ -44,16 +45,13 @@ public class RestClient {
 		
 		RequestSpecification request =	RestAssured.given().log().all()
 											.baseUri(baseUrl)
-												.contentType(contentType)
-													.accept(contentType);
+												.contentType(contentType);
+
 					
 					
 		switch (authType) {
 		case BEARER_TOKEN:
 			request.header("Authorization", "Bearer "+ConfigManager.get("bearerToken"));
-			break;
-		case CONTACTS_BEARER_TOKEN:
-			request.header("Authorization", "Bearer "+ConfigManager.get("contacts_bearer_Token"));
 			break;
 		case OAUTH2:
 			request.header("Authorization", "Bearer "+ generateOAuth2Token());
@@ -71,7 +69,7 @@ public class RestClient {
 			System.out.println("This Auth is not supported...please pass the right AuthType...");
 			throw new FrameworkException("NO AUTH SUPPORTED");
 		}
-		
+				
 		return request;
 		
 	}

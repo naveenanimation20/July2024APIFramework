@@ -37,7 +37,7 @@ public class UserAPITestWithDynamicJsonFile extends BaseTest{
 			obj.put("email", uniqueEmail);
 			
 			//convert jsonnode to json string:
-			String updatedJsonString = mapper.writeValueAsString(userNode);
+			String updatedJsonString = mapper.writeValueAsString(obj);
 			System.out.println("updated json string===>"+ updatedJsonString);
 			
 			Response response = 

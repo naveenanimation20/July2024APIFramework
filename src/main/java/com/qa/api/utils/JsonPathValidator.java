@@ -33,5 +33,28 @@ public class JsonPathValidator {
 		ReadContext ctx = JsonPath.parse(jsonResponse);
 		return ctx.read(jsonPath);
 	}
+	
+	
+//	private static String getJsonResponseAsString(Response response) {
+//        return response.getBody().asString();
+//    }
+//
+//    public static Object read(Response response, String jsonPath) {
+//        String jsonResponse = getJsonResponseAsString(response);
+//        ReadContext ctx = JsonPath.parse(jsonResponse);
+//        return ctx.read(jsonPath);
+//    }
+//
+//    public static List<Object> readList(Response response, String jsonPath) {
+//        String jsonResponse = getJsonResponseAsString(response);
+//        ReadContext ctx = JsonPath.parse(jsonResponse);
+//        return ctx.read(jsonPath);
+//    }
+//
+//    public static List<Map<String, Object>> readListOfMaps(Response response, String jsonPath) {
+//        String jsonResponse = getJsonResponseAsString(response);
+//        ReadContext ctx = JsonPath.parse(jsonResponse);
+//        return ctx.read(jsonPath);
+//    }
 
 }

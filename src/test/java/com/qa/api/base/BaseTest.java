@@ -24,6 +24,8 @@ public class BaseTest {
 
 	
 
+	
+
 	// ***********AppEndpoints**************
 	protected static final String GOREST_USERS_ALL_ENDPOINT = "/public/v2/users";
 	protected static final String RESTFULBOOKER_CREATE_TOKEN_ENDPOINT = "/auth";
@@ -33,6 +35,10 @@ public class BaseTest {
 	protected static final String FAKESTORE_USERS_ALL_ENDPOINT = "/users";
 	protected static final String CONTACTS_USER_LOGIN_ENDPOINT = "/users/login";
 	protected static final String CONTACTS_ALL_ENDPOINT = "/contacts";
+	protected static final String AMADEUS_TOKEN_ENDPOINT = "/v1/security/oauth2/token";
+	
+
+	
 
 	protected RestClient restClient;
 
